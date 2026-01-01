@@ -29,7 +29,7 @@ export const forgotpassword = async (req, res) => {
               <p>Your OTP is:</p>
               <h1>${otp}</h1>
               <p>This expires in 10 minutes.</p>
-            `, 
+            `,     
         })
         await transporter.sendMail({
             to: user.email,
