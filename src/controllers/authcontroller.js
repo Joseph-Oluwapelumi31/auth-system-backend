@@ -1,7 +1,6 @@
 import User from '../models/user.js';
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
-import transporter from '../config/mailer.js';
 import { generateOTP } from '../utils/generateOTP.js';
 import sendEmail  from '../config/sendEmail.js';
 
@@ -31,16 +30,7 @@ export const forgotpassword = async (req, res) => {
               <p>This expires in 10 minutes.</p>
             `,     
         })
-        await transporter.sendMail({
-            to: user.email,
-            subject: 'Password Reset OTP',
-            html: `
-              <h2>Password Reset</h2>
-              <p>Your OTP is:</p>
-              <h1>${otp}</h1>
-              <p>This expires in 10 minutes.</p>
-            `
-        })
+        
         res.status(200).json({ message: 'OTP sent to email' });
         
     } 
