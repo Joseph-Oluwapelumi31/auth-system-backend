@@ -16,12 +16,22 @@ const PORT = process.env.PORT || 5000;
 
 
 
-app.use(
-  cors({
-    origin: "http://localhost:5173", // EXACT frontend URL
-    credentials: true
-  })
-);
+const allowedOrigins = [
+  "http://localhost:5173", // local dev
+  "https://auth-system-frontend-tygq.vercel.app" // Vercel frontend
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // allow requests with no origin (like Postman)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
 
 app.use(express.json());
 
