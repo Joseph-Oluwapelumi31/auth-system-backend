@@ -31,15 +31,16 @@ export const forgotpassword = async (req, res) => {
               <p>This expires in 10 minutes.</p>
             `, 
         })
-        // await transporter.sendMail({
-        //     to: user.email,
-        //     subject: 'Password Reset OTP',
-        //     html: `
-        //         <h3>Password Reset</h3>
-        //         <p>Your OTP for password reset is: <strong>${otp}</strong></p>
-        //         <p>This OTP is valid for 15 minutes.</p>
-        //     `
-        // })
+        await transporter.sendMail({
+            to: user.email,
+            subject: 'Password Reset OTP',
+            html: `
+              <h2>Password Reset</h2>
+              <p>Your OTP is:</p>
+              <h1>${otp}</h1>
+              <p>This expires in 10 minutes.</p>
+            `
+        })
         res.status(200).json({ message: 'OTP sent to email' });
         
     } 
