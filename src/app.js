@@ -8,7 +8,6 @@ import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";        
 import postsRoutes from "./routes/postsRoutes.js";
 import { connectDB } from "./config/db.js";
-import mailer from './config/mailer.js'
 import { auth } from "./middlewares/auth.js";
 
 connectDB()
