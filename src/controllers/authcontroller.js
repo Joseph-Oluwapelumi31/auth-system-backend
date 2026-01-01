@@ -78,7 +78,7 @@ export const resetpassword = async (req,res) => {
         await user.save();
         res.status(200).json({message: 'Password reset successfully'})
     } catch (error) {
-        console.log('Error in verify-otp route', error);
+        console.log('Error in reset-passwordroute route', error);
         res.status(500).json({ error: error.message });
     }
     

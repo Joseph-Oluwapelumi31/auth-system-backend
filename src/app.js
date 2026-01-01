@@ -31,7 +31,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/posts", postsRoutes);
 
 
-app.get('/test',auth,(req,res)=>{
+app.get('/test',(req,res)=>{
   res.send('At last' + req.user);
 })
 app.listen(PORT, () => {
